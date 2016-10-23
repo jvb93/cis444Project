@@ -2,7 +2,7 @@
  
 <div class="col-md-12">
     <div class="row">
-        <h1> Local Restaurants
+        <h1> Local Restaurants </h1>
     </div>
     <div class="row">
         <div class="panel">
