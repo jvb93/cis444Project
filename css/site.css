@@ -45,3 +45,8 @@ body {
     top: 0;
   }
 }
+
+.voteArea
+{
+  text-align: center;
+}

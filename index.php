@@ -1,30 +1,220 @@
 <?php include 'header.php';?>
+ 
+<div class="col-md-12">
+    <div class="row">
+        <h1> Local Restaurants
+    </div>
+    <div class="row">
+        <div class="panel">
+            <div class="panel-heading">
+                <div class="text-center">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <h3 class="pull-left"><a href="#">Sublime Alehouse</a></h3>
+                        </div>
+                        <div class="col-sm-3">
+                            <h4 class="pull-right">
+                                <small><em>Submitted: 10/23/2016</em></small>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-  <div id="main">
-      <div class="col-md-12">
-      	  <p class="visible-xs">
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas"><i class="glyphicon glyphicon-chevron-left"></i></button>
-          </p>
-          <h2>Fixed + Fluid Bootstrap Template with Off-canvas Sidebar</h2>
-          <div class="row">
-              <div class="col-md-12"><div class="well"><p>Shrink the browser width to make the sidebar collapse off canvase.</p></div></div>
-          </div>
-          <div class="row">
-              <div class="col-md-4"><div class="well"><p>4 cols</p></div></div>
-              <div class="col-md-4"><div class="well"><p>4 cols</p></div></div>
-              <div class="col-md-4"><div class="well"><p>4 cols</p></div></div>
-          </div>
-          <div class="row">
-              <div class="col-lg-6 col-sm-6"><div class="well"><p>6 cols, 6 small cols</p></div></div>
-              <div class="col-lg-6 col-sm-6"><div class="well"><p>6 cols, 6 small cols</p></div></div>
-          </div>
-          <div class="row">
-              <div class="col-lg-4 col-sm-6"><div class="well">4 cols, 6 small cols</div></div>
-              <div class="col-lg-4 col-sm-6"><div class="well">4 cols, 6 small cols</div></div>
-              <div class="col-lg-4 col-sm-12"><div class="well">4 cols, 12 small cols</div></div>
-          </div>
-      </div>
-  </div>
-</div><!--/row-offcanvas -->
+            <div class="panel-body row">
+                <div class="col-md-1 voteArea">
+                    <div class="row">
+                        <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                    </div>
+                    <div class="row">
+                    206
+                    </div>
+                    <div class="row">
+                        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                    </div>
+
+                </div>
+                <div class="col-md-11">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in... <a href="#">Read more</a>
+                </div>
+
+            </div>
+            <div class="panel-footer">
+                <span class="label label-default">Beer</span> <span class="label label-default">Open Late</span> <span class="label label-default">Cheap</span>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-heading">
+                <div class="text-center">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <h3 class="pull-left"><a href="#">Flippin' Pizza</a></h3>
+                        </div>
+                        <div class="col-sm-3">
+                            <h4 class="pull-right">
+                                <small><em>Submitted: 10/23/2016</em></small>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body row">
+                <div class="col-md-1 voteArea">
+                    <div class="row">
+                        <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                    </div>
+                    <div class="row">
+                    199
+                    </div>
+                    <div class="row">
+                        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                    </div>
+
+                </div>
+                <div class="col-md-11">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in... <a href="#">Read more</a>
+                </div>
+
+            </div>
+            <div class="panel-footer">
+                <span class="label label-default">Pizza</span> <span class="label label-default">Student Discount</span> <span class="label label-default">Cheap</span>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-heading">
+                <div class="text-center">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <h3 class="pull-left"><a href="#">Flippin' Pizza</a></h3>
+                        </div>
+                        <div class="col-sm-3">
+                            <h4 class="pull-right">
+                                <small><em>Submitted: 10/23/2016</em></small>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body row">
+                <div class="col-md-1 voteArea">
+                    <div class="row">
+                        <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                    </div>
+                    <div class="row">
+                    199
+                    </div>
+                    <div class="row">
+                        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                    </div>
+
+                </div>
+                <div class="col-md-11">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in... <a href="#">Read more</a>
+                </div>
+
+            </div>
+            <div class="panel-footer">
+                <span class="label label-default">Pizza</span> <span class="label label-default">Student Discount</span> <span class="label label-default">Cheap</span>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-heading">
+                <div class="text-center">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <h3 class="pull-left"><a href="#">Flippin' Pizza</a></h3>
+                        </div>
+                        <div class="col-sm-3">
+                            <h4 class="pull-right">
+                                <small><em>Submitted: 10/23/2016</em></small>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body row">
+                <div class="col-md-1 voteArea">
+                    <div class="row">
+                        <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                    </div>
+                    <div class="row">
+                    199
+                    </div>
+                    <div class="row">
+                        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                    </div>
+
+                </div>
+                <div class="col-md-11">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in... <a href="#">Read more</a>
+                </div>
+
+            </div>
+            <div class="panel-footer">
+                <span class="label label-default">Pizza</span> <span class="label label-default">Student Discount</span> <span class="label label-default">Cheap</span>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-heading">
+                <div class="text-center">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <h3 class="pull-left"><a href="#">Flippin' Pizza</a></h3>
+                        </div>
+                        <div class="col-sm-3">
+                            <h4 class="pull-right">
+                                <small><em>Submitted: 10/23/2016</em></small>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-body row">
+                <div class="col-md-1 voteArea">
+                    <div class="row">
+                        <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                    </div>
+                    <div class="row">
+                    199
+                    </div>
+                    <div class="row">
+                        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                    </div>
+
+                </div>
+                <div class="col-md-11">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in... <a href="#">Read more</a>
+                </div>
+
+            </div>
+            <div class="panel-footer">
+                <span class="label label-default">Pizza</span> <span class="label label-default">Student Discount</span> <span class="label label-default">Cheap</span>
+            </div>
+        </div>
+         
+
+        
+    </div>
+    
+</div>
 
 <?php include 'footer.php'; ?>
