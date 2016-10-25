@@ -11,8 +11,8 @@
     <input type="field" class="form-control" placeholder="Password" size ="20">
   </div>
   <div class=" form-group ">
-  <button type="submit" class="btn btn-primary">Submit</button>
-  <button type="button" class="btn btn-primary"      onclick="window.location.href='registration.php'">Sign Up</button>
+  <button type="button" class="btn btn-primary" onclick="window.location.href='profile.php'">Login </button>
+  <button type="button" class="btn btn-primary" onclick="window.location.href='registration.php'">Sign Up</button>
   <button type="button" class="btn btn-primary">Forgot Password</button>
 
 </div>

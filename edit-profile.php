@@ -16,29 +16,29 @@
 <div class= "col-md-offset-3">
           <h3 class = "Personal-info-header" >Personal info</h3><!--having troube centering-->
 
-          <form class="form-horizontal" role="form">
+          <form class="form-group" role="form">
             <div class="form-group">
               <label class="col-lg-3 control-label">First name:</label>
               <div class="col-lg-8">
-                <input class="form-control" type="text" value="James">
+                <input class="form-control" type="text" value="John">
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Last name:</label>
               <div class="col-lg-8">
-                <input class="form-control" type="text" value="Garfield">
+                <input class="form-control" type="text" value="Smith">
               </div>
             </div>
             <div class="form-group">
-              <label class="col-lg-3 control-label">Restaurant name:</label>
+              <label class="col-lg-3 control-label">Favorite Resturaunts:</label>
               <div class="col-lg-8">
-                <input class="form-control" type="text" value="Panda Garden">
+                <input class="form-control" type="text">
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Email:</label>
               <div class="col-lg-8">
-                <input class="form-control" type="text" value="Jamesgarfield@gmail.com">
+                <input class="form-control" type="text" value="johnsmith@gmail.com">
               </div>
             </div>
 
@@ -59,18 +59,13 @@
             <div class="form-group">
               <label class="col-md-3 control-label"></label>
               <div class="col-md-8">
-                <input class="btn btn-primary" type="button" value="Save Changes">
+                <input class="btn btn-primary" type="button" value="Save Changes" onclick="window.location.href='profile.php'">
                 <span></span>
                 <input class="btn btn-default" type="reset" value="Cancel">
               </div>
             </div>
           </form>
-          <div class = " col-md-offset-3 bio-page">
-          <p> Bio: </p>
-          <textarea cols="50" rows="5" style="overflow:scroll;">
 
-          </textarea>
-        </div>
 
 
       </div>
