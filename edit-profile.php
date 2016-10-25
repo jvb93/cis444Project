@@ -20,25 +20,21 @@
             <div class="form-group">
               <label class="col-lg-3 control-label">First name:</label>
               <div class="col-lg-8">
-                <input class="form-control" type="text" value="James">
+                <input class="form-control" type="text" value="John">
               </div>
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Last name:</label>
               <div class="col-lg-8">
-                <input class="form-control" type="text" value="Garfield">
+                <input class="form-control" type="text" value="Smith">
               </div>
             </div>
-            <div class="form-group">
-              <label class="col-lg-3 control-label">Restaurant name:</label>
-              <div class="col-lg-8">
-                <input class="form-control" type="text" value="Panda Garden">
-              </div>
+
             </div>
             <div class="form-group">
               <label class="col-lg-3 control-label">Email:</label>
               <div class="col-lg-8">
-                <input class="form-control" type="text" value="Jamesgarfield@gmail.com">
+                <input class="form-control" type="text" value="myemail@gmail.com">
               </div>
             </div>
 
