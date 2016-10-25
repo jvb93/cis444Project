@@ -6,7 +6,7 @@
       <h1> Local Restaurants </h1>
     </div>
     <div class="col-md-2">
-        <a href="#" class="btn btn-success" id="addRestaurantButton">Add New Restaurant </a>
+       
     </div>
       
         
