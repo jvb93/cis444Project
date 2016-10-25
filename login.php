@@ -12,7 +12,7 @@
   </div>
   <div class=" form-group ">
   <button type="submit" class="btn btn-primary">Submit</button>
-  <button type="button" class="btn btn-primary">Sign Up</button>
+  <button type="button" class="btn btn-primary"      onclick="window.location.href='registration.php'">Sign Up</button>
   <button type="button" class="btn btn-primary">Forgot Password</button>
 
 </div>
