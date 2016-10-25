@@ -36,6 +36,7 @@
           <li><a href="faqContact.php">About</a></li>
           <li><a href="addRestaurant.php">Add Restaurant</a></li>
           <li><a href="login.php">Login</a></li>
+           <li><a href="references.php">References</a></li>
           
         </ul>
         <div class="col-sm-3 col-md-3 navbar-right">
