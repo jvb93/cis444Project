@@ -10,6 +10,7 @@
             <p> Restaurant's Distance, Rating, Price, etc. </p>
             <p> Resturant's Bio: Description, History, Deal's, Phone Numbers, Address, etc. </p>
             <p> (Link to Restaurant's website if available) </p>
+            <form id = "commentForm" action = "">
               <label for"Comment Box">Comment:</label>
               <textarea class="form-control" rows="3"></textarea>
               <input type = "submit" value = "Submit" />
@@ -29,14 +30,17 @@
           </div></div>
 
           <div class="col-md-3"><div class="well">
+            <h4> Suggested Restaurants: </h4>
 
             <div class = "suggestedRestaurant">
+              <h6> Suggested Restaurant 1 </h6>
               <p>
                 <img src = "" alt = "'Picture of Suggested Restaurant'" />
               </p>
             </div>
 
             <div class = "suggestedRestaurant">
+              <h6> Suggested Restaurant 2 </h6>
               <p>
                 <img src = "" alt = "'Picture of Suggested 2 Restaurant'" />
               </p>

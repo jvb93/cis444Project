@@ -1,4 +1,4 @@
-<!DOCTYPE html>
++<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -33,8 +33,10 @@
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="login.php">Login</a></li> 
+          <li><a href="restaurantProfile.php">Restaurant Profile</a></li>
+          <li><a href="addRestaurant.php">Add Restaurant</a></li>
+          <li><a href="faqContact.php">Contact/FAQ</a></li>
+          <li><a href="login.php">Login</a></li>
         </ul>
         <div class="col-sm-3 col-md-3 navbar-right">
         <form class="navbar-form" role="search">
