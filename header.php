@@ -1,4 +1,6 @@
+<?php session_start() ?>
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -18,7 +20,7 @@
     <![endif]-->
   </head>
   <body>
-  <?php include('phpFunctions/db_connect.php'); ?>
+  
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -35,6 +37,8 @@
           <li><a href="index.php">Home</a></li>
           <li><a href="faqContact.php">About</a></li>
           <?php 
+         
+     
             if(isset($_SESSION['userName']))	//If the sesssion is already started.
             {          
               echo"<li><a href='addRestaurant.php'>Add Restaurant</a></li>";
@@ -43,11 +47,11 @@
                 echo"<li><a href='listUsers.php'>List Users</a></li>";
               }
 
-              echo"<li><a href='logout.php>Logout</a></li>";                          
+              echo"<li><a href='logout.php'>Logout</a></li>";                          
             }
             else	//Session not set, so load these links.
             {	
-              echo"<li><a href='login.php>Login</a></li>";   
+              echo"<li><a href='login.php'>Login</a></li>";   
             }
           ?>                
           <li><a href="references.php">References</a></li>         
@@ -67,4 +71,5 @@
       </div>
 
     </nav>
+    <?php include('phpFunctions/db_connect.php'); ?>
     <div class="container-fluid">
