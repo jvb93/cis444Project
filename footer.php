@@ -1,5 +1,5 @@
     
-    
+    <?php include('phpFunctions/db_disconnect.php'); ?>	
     </div><!--/row-offcanvas -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

@@ -14,11 +14,6 @@
           <p>Frequently asked question answer2 </p>
           <h2>Contact at:</h2>
           <p>Enter Email or Phone information here </br></p>
-          <form id = "suggestionForm" action = "">
-            <label>Suggestions:</label>
-            <textarea class="form-control" rows="3"></textarea>
-            <input type = "submit" value = "Submit" />
-          </form>
         </div>
 
   </div>

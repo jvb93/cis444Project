@@ -18,6 +18,7 @@
     <![endif]-->
   </head>
   <body>
+  <?php include('phpFunctions/db_connect.php'); ?>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -31,13 +32,25 @@
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-
           <li><a href="index.php">Home</a></li>
           <li><a href="faqContact.php">About</a></li>
-          <li><a href="addRestaurant.php">Add Restaurant</a></li>
-          <li><a href="login.php">Login</a></li>
-           <li><a href="references.php">References</a></li>
-          
+          <?php 
+            if(isset($_SESSION['userName']))	//If the sesssion is already started.
+            {          
+              echo"<li><a href='addRestaurant.php'>Add Restaurant</a></li>";
+              if($_SESSION['isAdmin'] == 1)
+              {
+                echo"<li><a href='listUsers.php'>List Users</a></li>";
+              }
+
+              echo"<li><a href='logout.php>Logout</a></li>";                          
+            }
+            else	//Session not set, so load these links.
+            {	
+              echo"<li><a href='login.php>Login</a></li>";   
+            }
+          ?>                
+          <li><a href="references.php">References</a></li>         
         </ul>
         <div class="col-sm-3 col-md-3 navbar-right">
         <form class="navbar-form" role="search">
