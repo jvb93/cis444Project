@@ -11,7 +11,7 @@
     <input type="field" class="form-control" placeholder="Password" size ="20" name="password">
   </div>
   <div class="form-group ">
-  <input type="submit" class="btn btn-primary">Login</button>
+  <button type="submit" class="btn btn-primary">Login</button>
   <a href="registration.php" class="btn btn-primary">Sign Up</a> 
   
 
