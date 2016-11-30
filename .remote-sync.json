@@ -1,0 +1,16 @@
+{
+  "uploadOnSave": true,
+  "useAtomicWrites": false,
+  "deleteLocal": false,
+  "hostname": "cis444.cs.csusm.edu",
+  "port": "22",
+  "target": "/var/www/html/vanbi002/Final Project",
+  "ignore": [
+    ".remote-sync.json",
+    ".git/**"
+  ],
+  "username": "vanbi002",
+  "password": "760biosA21",
+  "watch": [],
+  "transport": "scp"
+}

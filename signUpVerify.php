@@ -3,11 +3,11 @@
 
 		<?php
 			//First lets get the username and password from the user
-			$userId=$_GET["userId"];
-
+			$username=$_POST["username"];
+			$password=$_POST["password"];
 
 			//Second let's check if that username and password are correct and found in our database
-			$sql1=mysql_query("select is_admin from User where id='$userId'")
+			$sql1=mysql_query("insert into User(user_name, Pass, create_date, last_login, is_admin) values('$username', '$password', NOW(), NOW(), 0)")
 							   or die("<p>Could not perform database query for user login.</p>"
 									. "<p>Error Code " . mysql_errno()
 									. ": " . mysql_error()) . "<p>";
@@ -19,23 +19,18 @@
 				//Valid user, so set the session
 				$dataRow = mysql_fetch_row($sql1);
 
+				session_start();
+				$_SESSION['userName'] = $username;
+				$_SESSION['isAdmin'] = 0;
 
-        $is_admin = $dataRow[0];
+				$_SESSION['sessionStartTime'] = time();
 
-        if($is_admin == 1)
-        {
-          $is_admin = 0;
-        }
-        else
-        {
-          $is_admin = 1;
-        }
+				//$logText = "User Login";
+				//Now lets log the login.
+				//insertLog($_SESSION['userName'], $logText );
 
-        $sql2=mysql_query("update User set is_admin='$is_admin' where id='$userId'")
-  							   or die("<p>Could not perform database query for user login.</p>"
-  									. "<p>Error Code " . mysql_errno()
-  									. ": " . mysql_error()) . "<p>";
+				//Now send them to the success page.
+				echo("<script type='text/javascript'>location.replace('index.php'); </script>");
 
-        header("location:listUsers.php");
 		?>
 <?php include"footer.php"; ?>
