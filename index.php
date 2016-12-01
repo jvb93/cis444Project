@@ -13,7 +13,11 @@
     </div>
     <div class="row">
       <?php
-      $result = mysql_query("SELECT * FROM Restaurant")
+      $result = mysql_query("select *, SUM(((is_positive * 2) - 1)) as 'score'
+								from Restaurant
+								join Vote on Restaurant.id = Vote.restaurant_id
+								group by Restaurant.id, name, url, Restaurant.submitter_id, submit_date
+								order by score desc")
               or die("<p>Could not perform database query by device type types.</p>"
               . "<p>Error Code " . mysql_errno()
               . ": " . mysql_error()) . "<p>";
@@ -51,7 +55,7 @@
                                     <span class='glyphicon glyphicon-chevron-up' aria-hidden='true'></span>
                                 </div>
                                 <div class='row'>
-                                206
+                                {$dataRow[9]}
                                 </div>
                                 <div class='row'>
                                     <span class='glyphicon glyphicon-chevron-down' aria-hidden='true'></span>
