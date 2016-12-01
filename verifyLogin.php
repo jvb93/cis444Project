@@ -27,7 +27,7 @@
 				session_start();
 				$_SESSION['userName'] = $dataRow[0];
 				$_SESSION['isAdmin'] = $dataRow[1];
-				$_SESSION['userId'] = $dataRow[1];
+				$_SESSION['userId'] = $dataRow[2];
 
 				$_SESSION['sessionStartTime'] = time();
 
