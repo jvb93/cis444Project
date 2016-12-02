@@ -11,4 +11,5 @@ $DBselected = @mysql_select_db("vanbi002")
 	or die("<p> Unable to select database.</P>"
 			. "<p> Error Code: " . mysql_errno()
 			. ": " . mysql_error() . "<p>");
+			
 ?>

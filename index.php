@@ -25,6 +25,8 @@
               if(mysql_num_rows($result) > 0)
               {
                 $dataRow = mysql_fetch_row($result);
+
+
                 do{
 
 
@@ -32,17 +34,30 @@
                             or die("<p>Could not perform database query by device type types.</p>"
                             . "<p>Error Code " . mysql_errno()
                             . ": " . mysql_error()) . "<p>";
+                  $votes =  mysql_query("SELECT is_positive from Vote where Vote.restaurant_id = '{$dataRow[0]}' and Vote.submitter_id = {$_SESSION['userId']}")
+                            or die("<p>Could not perform database query by device type types.</p>"
+                            . "<p>Error Code " . mysql_errno()
+                            . ": " . mysql_error()) . "<p>";
 
+
+                  if(mysql_num_rows($votes) > 0)
+                  {
+                       $voteRow = mysql_fetch_row($votes);
+                       $positive = $voteRow[0];
+                  }
+
+
+                  # start restaurant panel
                   echo("<div class='panel'>
                         <div class='panel-heading'>
                             <div class='text-center'>
                                 <div class='row'>
                                     <div class='col-sm-9'>
-                                        <h3 class='pull-left'><a href='restaurant.php?id={$dataRow[0]}'>{$dataRow[1]}</a></h3>
+
                                     </div>
                                     <div class='col-sm-3'>
                                         <h4 class='pull-right'>
-                                            <small><em>Submitted:{$dataRow[4]}</em></small>
+                                            <small><em>Submitted: {$dataRow[4]}</em></small>
                                         </h4>
                                     </div>
                                 </div>
@@ -51,36 +66,71 @@
 
                         <div class='panel-body row'>
                             <div class='col-md-1 voteArea'>
-                                <div class='row'>
-                                    <span class='glyphicon glyphicon-chevron-up' aria-hidden='true'></span>
-                                </div>
-                                <div class='row'>
-                                {$dataRow[9]}
-                                </div>
-                                <div class='row'>
-                                    <span class='glyphicon glyphicon-chevron-down' aria-hidden='true'></span>
-                                </div>
+                                <div class='row'>");
+                          # check to see if the user has voted for this restaurant, highlight their vote if they have
+                          if(isset($positive))
+                          {
 
+                            # if they voted and it was an upvote, make the up arrow red
+                            if($positive == 1)
+                            {
+                              echo("<a href='voteUp.php?id={$dataRow[0]}'><span class='glyphicon glyphicon-chevron-up upVote vote' aria-hidden='true'></span></a>
+                              </div>
+                              <div class='row'>
+                              {$dataRow[9]}
+                              </div>
+                              <div class='row'>
+                              <a href='voteDown.php?id={$dataRow[0]}'><span class='glyphicon glyphicon-chevron-down vote' aria-hidden='true'></span></a>
+                              </div>");
+                            }
+                              # if they voted and it was a downvote, make the down arrow blue
+                            else
+                            {
+                              echo("<a href='voteUp.php?id={$dataRow[0]}'><span class='glyphicon glyphicon-chevron-up vote' aria-hidden='true'></span></a>
+                              </div>
+                              <div class='row'>
+                              {$dataRow[9]}
+                              </div>
+                              <div class='row'>
+                              <a href='voteDown.php?id={$dataRow[0]}'><span class='glyphicon glyphicon-chevron-down downVote vote' aria-hidden='true'></span></a>
+                              </div>");
+                            }
+
+                          }
+                          #if this user hasn't voted for this restaurant, don't highlight an up or down arrow
+                          else
+                          {
+                            echo("<a href='voteUp.php?id={$dataRow[0]}'><span class='glyphicon glyphicon-chevron-up vote' aria-hidden='true'></span></a>
                             </div>
-                            <div class='col-md-11'>
-
+                            <div class='row'>
+                            {$dataRow[9]}
                             </div>
+                            <div class='row'>
+                            <a href='voteDown.php?id={$dataRow[0]}'><span class='glyphicon glyphicon-chevron-down vote' aria-hidden='true'></span></a>
+                            </div>");
+                          }
 
-                        </div>
-                        <div class='panel-footer'>");
+                          # make the panel footer
+                          echo("</div>
+                          <div class='col-md-11'>
+                            <h3 class='pull-left'><a href='{$dataRow[2]}' target='_blank'> {$dataRow[1]}</a></h3>
+                          </div>
+                          </div>
+                          <div class='panel-footer'>");
+
                         $dataRow2 = mysql_fetch_row($tags);
                         do{
 
 
-                            echo("<span class='label label-default'>{$dataRow2[0]}</span>");
+                            echo("<span class='label label-default'>{$dataRow2[0]}</span>&nbsp;");
 
                             $dataRow2 = mysql_fetch_row ($tags);
                         } while ($dataRow2);
 
 
 
-
-                        echo("</div>
+                        # close panel footer, closing the panel
+                        echo("<a href='restaurant.php?id={$dataRow[0]}' class='btn btn-primary btn-xs pull-right'>view comments</a></div>
                     </div>");
 
                     $dataRow = mysql_fetch_row ($result);
