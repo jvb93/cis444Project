@@ -67,9 +67,8 @@
         </form>
     </div>
       </div><!--/.nav-collapse -->
-
       </div>
 
     </nav>
     <?php include('phpFunctions/db_connect.php'); ?>
-    <div class="container-fluid">
+    <div class="container">

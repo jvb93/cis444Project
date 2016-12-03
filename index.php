@@ -2,7 +2,7 @@
 
 <div class="col-md-12">
     <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-10" style="padding-left:0px;">
       <h1> Local Restaurants </h1>
     </div>
     <div class="col-md-2">
@@ -46,18 +46,17 @@
                        $positive = $voteRow[0];
                   }
 
-
+                  $phpdate = strtotime( $dataRow[4] );
+                  $mysqldate = date( 'F j, Y g:i a', $phpdate );
                   # start restaurant panel
                   echo("<div class='panel'>
                         <div class='panel-heading'>
                             <div class='text-center'>
                                 <div class='row'>
-                                    <div class='col-sm-9'>
 
-                                    </div>
-                                    <div class='col-sm-3'>
+                                    <div class='col-sm-12'>
                                         <h4 class='pull-right'>
-                                            <small><em>Submitted: {$dataRow[4]}</em></small>
+                                            <small><em>Submitted: {$mysqldate}</em></small>
                                         </h4>
                                     </div>
                                 </div>
@@ -74,25 +73,25 @@
                             # if they voted and it was an upvote, make the up arrow red
                             if($positive == 1)
                             {
-                              echo("<a href='voteUp.php?id={$dataRow[0]}'><span class='glyphicon glyphicon-chevron-up upVote vote' aria-hidden='true'></span></a>
+                              echo("<a href='#'><span class='glyphicon glyphicon-chevron-up vote upVote text-success' aria-hidden='true' data-id='{$dataRow[0]}'></span></a>
                               </div>
-                              <div class='row'>
+                              <div class='row text-success score'>
                               {$dataRow[9]}
                               </div>
                               <div class='row'>
-                              <a href='voteDown.php?id={$dataRow[0]}'><span class='glyphicon glyphicon-chevron-down vote' aria-hidden='true'></span></a>
+                              <a href='#'><span class='glyphicon glyphicon-chevron-down downVote vote' aria-hidden='true' data-id='{$dataRow[0]}'></span></a>
                               </div>");
                             }
                               # if they voted and it was a downvote, make the down arrow blue
                             else
                             {
-                              echo("<a href='voteUp.php?id={$dataRow[0]}'><span class='glyphicon glyphicon-chevron-up vote' aria-hidden='true'></span></a>
+                              echo("<a href='#'><span class='glyphicon glyphicon-chevron-up vote upVote' aria-hidden='true' data-id='{$dataRow[0]}'></span></a>
                               </div>
-                              <div class='row'>
+                              <div class='row text-danger score'>
                               {$dataRow[9]}
                               </div>
                               <div class='row'>
-                              <a href='voteDown.php?id={$dataRow[0]}'><span class='glyphicon glyphicon-chevron-down downVote vote' aria-hidden='true'></span></a>
+                              <a href='#'><span class='glyphicon glyphicon-chevron-down downVote vote text-danger data-id='{$dataRow[0]}' aria-hidden='true'></span></a>
                               </div>");
                             }
 
@@ -100,20 +99,20 @@
                           #if this user hasn't voted for this restaurant, don't highlight an up or down arrow
                           else
                           {
-                            echo("<a href='voteUp.php?id={$dataRow[0]}'><span class='glyphicon glyphicon-chevron-up vote' aria-hidden='true'></span></a>
+                            echo("<a href='#'><span class='glyphicon glyphicon-chevron-up vote upVote' aria-hidden='true' data-id='{$dataRow[0]}'></span></a>
                             </div>
-                            <div class='row'>
+                            <div class='row score'>
                             {$dataRow[9]}
                             </div>
                             <div class='row'>
-                            <a href='voteDown.php?id={$dataRow[0]}'><span class='glyphicon glyphicon-chevron-down vote' aria-hidden='true'></span></a>
+                            <a href='#'><span class='glyphicon glyphicon-chevron-down downVote vote' aria-hidden='true' data-id='{$dataRow[0]}'></span></a>
                             </div>");
                           }
 
                           # make the panel footer
                           echo("</div>
                           <div class='col-md-11'>
-                            <h3 class='pull-left'><a href='{$dataRow[2]}' target='_blank'> {$dataRow[1]}</a></h3>
+                            <h2 class='pull-left restaurantLink'><a href='{$dataRow[2]}' target='_blank'> {$dataRow[1]}</a></h2>
                           </div>
                           </div>
                           <div class='panel-footer'>");
@@ -122,7 +121,7 @@
                         do{
 
 
-                            echo("<span class='label label-default'>{$dataRow2[0]}</span>&nbsp;");
+                            echo("<span class='label label-info'>{$dataRow2[0]}</span>&nbsp;");
 
                             $dataRow2 = mysql_fetch_row ($tags);
                         } while ($dataRow2);
