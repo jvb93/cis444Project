@@ -1,5 +1,5 @@
 <?php include 'header.php';?>
-
+<input type="hidden" id="php_sess" value="<?php echo(isset($_SESSION['userId'])); ?>">
 <div class="col-md-12">
     <div class="row">
     <div class="col-md-10" style="padding-left:0px;">
@@ -34,17 +34,21 @@
                             or die("<p>Could not perform database query by device type types.</p>"
                             . "<p>Error Code " . mysql_errno()
                             . ": " . mysql_error()) . "<p>";
-                  $votes =  mysql_query("SELECT is_positive from Vote where Vote.restaurant_id = '{$dataRow[0]}' and Vote.submitter_id = {$_SESSION['userId']}")
-                            or die("<p>Could not perform database query by device type types.</p>"
-                            . "<p>Error Code " . mysql_errno()
-                            . ": " . mysql_error()) . "<p>";
-
-
-                  if(mysql_num_rows($votes) > 0)
+                  if(isset($_SESSION['userId']))
                   {
-                       $voteRow = mysql_fetch_row($votes);
-                       $positive = $voteRow[0];
+                    $votes =  mysql_query("SELECT is_positive from Vote where Vote.restaurant_id = '{$dataRow[0]}' and Vote.submitter_id = {$_SESSION['userId']}")
+                              or die("<p>Could not perform database query by device type types.</p>"
+                              . "<p>Error Code " . mysql_errno()
+                              . ": " . mysql_error()) . "<p>";
+
+
+                    if(mysql_num_rows($votes) > 0)
+                    {
+                         $voteRow = mysql_fetch_row($votes);
+                         $positive = $voteRow[0];
+                    }
                   }
+
 
                   $phpdate = strtotime( $dataRow[4] );
                   $mysqldate = date( 'F j, Y g:i a', $phpdate );
@@ -73,25 +77,25 @@
                             # if they voted and it was an upvote, make the up arrow red
                             if($positive == 1)
                             {
-                              echo("<a href='#'><span class='glyphicon glyphicon-chevron-up vote upVote text-success' aria-hidden='true' data-id='{$dataRow[0]}'></span></a>
+                              echo("<a href='#' class='voteLink'><span class='glyphicon glyphicon-chevron-up vote upVote text-success' aria-hidden='true' data-id='{$dataRow[0]}'></span></a>
                               </div>
                               <div class='row text-success score'>
                               {$dataRow[9]}
                               </div>
                               <div class='row'>
-                              <a href='#'><span class='glyphicon glyphicon-chevron-down downVote vote' aria-hidden='true' data-id='{$dataRow[0]}'></span></a>
+                              <a href='#' class='voteLink'><span class='glyphicon glyphicon-chevron-down downVote vote' aria-hidden='true' data-id='{$dataRow[0]}'></span></a>
                               </div>");
                             }
                               # if they voted and it was a downvote, make the down arrow blue
                             else
                             {
-                              echo("<a href='#'><span class='glyphicon glyphicon-chevron-up vote upVote' aria-hidden='true' data-id='{$dataRow[0]}'></span></a>
+                              echo("<a href='#' class='voteLink'><span class='glyphicon glyphicon-chevron-up vote upVote' aria-hidden='true' data-id='{$dataRow[0]}'></span></a>
                               </div>
                               <div class='row text-danger score'>
                               {$dataRow[9]}
                               </div>
                               <div class='row'>
-                              <a href='#'><span class='glyphicon glyphicon-chevron-down downVote vote text-danger data-id='{$dataRow[0]}' aria-hidden='true'></span></a>
+                              <a href='#' class='voteLink'><span class='glyphicon glyphicon-chevron-down downVote vote text-danger data-id='{$dataRow[0]}' aria-hidden='true'></span></a>
                               </div>");
                             }
 
@@ -99,13 +103,13 @@
                           #if this user hasn't voted for this restaurant, don't highlight an up or down arrow
                           else
                           {
-                            echo("<a href='#'><span class='glyphicon glyphicon-chevron-up vote upVote' aria-hidden='true' data-id='{$dataRow[0]}'></span></a>
+                            echo("<a href='#' class='voteLink'><span class='glyphicon glyphicon-chevron-up vote upVote' aria-hidden='true' data-id='{$dataRow[0]}'></span></a>
                             </div>
-                            <div class='row score'>
+                            <div class='row text-muted score'>
                             {$dataRow[9]}
                             </div>
                             <div class='row'>
-                            <a href='#'><span class='glyphicon glyphicon-chevron-down downVote vote' aria-hidden='true' data-id='{$dataRow[0]}'></span></a>
+                            <a href='#' class='voteLink'><span class='glyphicon glyphicon-chevron-down downVote vote' aria-hidden='true' data-id='{$dataRow[0]}'></span></a>
                             </div>");
                           }
 
