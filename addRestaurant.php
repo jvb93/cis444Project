@@ -1,7 +1,5 @@
 <?php include 'header.php';?>
 <div id ="main">
-
-
   <div class="col-md-12">
     <h1>Add Restaurant</h1>
     <div class="row">
@@ -28,17 +26,6 @@
         </div>
       </div>
     </div>
-
   </div>
-
-
-
-
-
-
-
-
-
-
 </div>
 <?php include 'footer.php'; ?>
