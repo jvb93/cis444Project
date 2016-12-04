@@ -14,7 +14,7 @@
 
 			if (mysql_num_rows($sql1) != 1)
 			{
-				echo("<script type='text/javascript'>location.replace('authentication_Failure_Page.php');</script>");
+				echo("<script type='text/javascript'>location.replace('login_Failure.php.');</script>");
 			}
 			//if they are found in our database, and there is only one occurence of that username and password
 			//thus making them valid.

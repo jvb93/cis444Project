@@ -7,6 +7,6 @@
     <script src="js/index.js"></script>
     <script src="js/common.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/bootstrap-tagsinput.js"></script>
+    <script src="js/bootstrap-tagsinput.min.js"></script>
   </body>
 </html>

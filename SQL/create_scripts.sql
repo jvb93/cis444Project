@@ -59,4 +59,3 @@ CREATE TABLE IF NOT EXISTS Tag_Restaurant_Mapping
   CONSTRAINT tag_restaurant_tag_id_fk FOREIGN KEY (tag_id) REFERENCES tag (id),
   CONSTRAINT tag_restaurant_restaurant_id_fk FOREIGN KEY (restaurant_id) REFERENCES restaurant (id)
 );
-
