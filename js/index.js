@@ -27,6 +27,8 @@ $(document).ready(function(){
         $.ajax({
           url: ajaxURL,
           method: 'GET'
+        }).done(function(e){
+          console.log(e);
         });
       }
     });
