@@ -19,17 +19,17 @@ or die("<p>Could not perform database query for user login.</p>"
  foreach($tagList as &$tagValue){
   //if tag exists just grab tag ID
  if(mysql_num_rows($tagValue)>0){
-   $tempTagID = mysql_query("SELECT id from Tag where tag_value = '{$tagValue}'");
+   $tagID = mysql_query("SELECT id from Tag where tag_value = '{$tagValue}'");
  }
 
  //if tag doesnt exist, insert tag and grab the generated tag id
  else{
  $sql = mysql_query("insert into tag(tag_value) values('{$tagValue}')")
- $tagID = mysql_query("SELECT id from Tag where tag_value = '{$tagValue}'");
+  $tagID = mysql_query("SELECT id from Tag where tag_value = '{$tagValue}'");
  }
 
  //map the tag with the restaurant in the Tag_Restaurant_Mapping
- $sql = mysql_query("insert into Tag_Restaurant_Mapping(restaurant_id,tag_id) values('{$restaurantID}','{$tempTagID}'")
+ $sql = mysql_query("insert into Tag_Restaurant_Mapping(restaurant_id,tag_id) values('{$restaurantID}','{$tagID}'")
 }
 
 //query restaurant ID
