@@ -95,7 +95,7 @@
                               {$dataRow[9]}
                               </div>
                               <div class='row'>
-                              <a href='#' class='voteLink'><span class='glyphicon glyphicon-chevron-down downVote vote text-danger data-id='{$dataRow[0]}' aria-hidden='true'></span></a>
+                              <a href='#' class='voteLink'><span class='glyphicon glyphicon-chevron-down downVote vote text-danger' data-id='{$dataRow[0]}' aria-hidden='true'></span></a>
                               </div>");
                             }
 

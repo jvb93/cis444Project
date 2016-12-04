@@ -20,8 +20,12 @@ $(document).ready(function(){
         thisDownVoteButton.removeClass('text-danger');
         thisUpVoteButton.addClass('text-success');
         voteAreaScore.text(parseFloat(voteAreaScore.text())+1);
+
+        var ajaxURL = 'upVote.php?id='+id;
+
+        console.log(ajaxURL);
         $.ajax({
-          url: 'voteUp.php?id='+id,
+          url: ajaxURL,
           method: 'GET'
         });
       }
@@ -46,8 +50,10 @@ $(document).ready(function(){
         thisDownVoteButton.addClass('text-danger');
         voteAreaScore.text(parseFloat(voteAreaScore.text())-1);
 
+        var ajaxURL = 'downVote.php?id='+id;
+        console.log(ajaxURL);
         $.ajax({
-          url: 'voteDown.php?id='+id,
+          url: ajaxURL,
           method: 'GET'
         });
       }
