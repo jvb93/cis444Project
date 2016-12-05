@@ -12,6 +12,23 @@ $dataRow = mysql_fetch_row($result);
   echo("<h1>$dataRow[1]</h1>");
   $phpdate = strtotime( $dataRow[2] );
   $mysqldate = date( 'F j, Y g:i a', $phpdate );
+
+  //Print tags
+  $tags =  mysql_query("SELECT tag_value from Tag join Tag_Restaurant_Mapping on Tag_Restaurant_Mapping.tag_id = Tag.id where Tag_Restaurant_Mapping.restaurant_id = '{$id}'")
+            or die("<p>Could not perform database query by device type types.</p>"
+            . "<p>Error Code " . mysql_errno()
+            . ": " . mysql_error()) . "<p>";
+$tagRow = mysql_fetch_row($tags);
+        do{
+
+
+            echo("<span class='label label-info'>{$tagRow[0]}</span>&nbsp;");
+
+            $tagRow = mysql_fetch_row ($tags);
+        } while ($tagRow);
+  //
+  echo("<p><br/></p>");
+
   echo("<p>Submitted: $mysqldate by $dataRow[3]</p><br/>");
   echo("<a href='$dataRow[4]' target='_blank'>Visit Site</a><br/>");
   $tags =  mysql_query("SELECT tag_value from Tag join Tag_Restaurant_Mapping on Tag_Restaurant_Mapping.tag_id = Tag.id where Tag_Restaurant_Mapping.restaurant_id = '{$dataRow[0]}'")
@@ -28,7 +45,7 @@ $dataRow = mysql_fetch_row($result);
        $_SESSION['isAdmin'] == 1)
     {
       echo("<form action='deleteRestaurant.php' method='get'>");
-      echo("<p><input type ='submit' value='delete' />");
+      echo("<p> <input class='btn btn-danger' type ='submit' value='delete' />");
       echo("<input type='hidden' name='restaurantID' value={$id} />");
       echo("</form>");
     }
