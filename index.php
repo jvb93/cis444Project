@@ -66,6 +66,7 @@
                             or die("<p>Could not perform database query by device type types.</p>"
                             . "<p>Error Code " . mysql_errno()
                             . ": " . mysql_error()) . "<p>";
+
                   if(isset($_SESSION['userId']))
                   {
                     $votes =  mysql_query("SELECT is_positive from Vote where Vote.restaurant_id = '{$dataRow[0]}' and Vote.submitter_id = {$_SESSION['userId']}")
@@ -103,7 +104,7 @@
                             <div class='col-md-1 voteArea'>
                                 <div class='row'>");
                           # check to see if the user has voted for this restaurant, highlight their vote if they have
-                          if(mysql_num_rows($votes) > 0)
+                          if( isset($votes) && mysql_num_rows($votes) > 0)
                           {
 
                             # if they voted and it was an upvote, make the up arrow red

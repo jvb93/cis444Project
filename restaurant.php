@@ -56,51 +56,42 @@ if(isset($_SESSION['userId']))
     </div>
       ");
 }
+
+echo("<h3>Comments</h3>");
 #Showing comments for restuarant
 $comments = mysql_query("SELECT User.User_Name, Comment.comment_text,
   Comment.submit_date FROM User JOIN Comment
-  ON User.id=Comment.submitter_id WHERE Comment.restaurant_id={$id}");
+  ON User.id=Comment.submitter_id WHERE Comment.restaurant_id={$id} order by Comment.Submit_Date desc");
 
   $num_rows = mysql_num_rows($comments);
   if ($num_rows > 0)
   {
-    $row = mysql_fetch_assoc($comments);
-    $num_fields = mysql_num_fields($comments);
-    $keys = array_keys($row);
-    for ($index = 0; $index < $num_fields; $index++)
-    {
-      print  $keys[$index] . "   ";
-    }
-    print "<br />";
+    $row = mysql_fetch_row($comments);
+
+
     for ($row_num = 0; $row_num < $num_rows; $row_num++)
     {
-      print "<br />";
-      $values = array_values($row);
-      for ($index = 0; $index < $num_fields; $index++)
-        {
-          $value = htmlspecialchars($values[$index]);
-          print $value. "    ";
-        }
-      print "<br />";
-      $row = mysql_fetch_assoc($comments);
+      $phpdate = strtotime( $row[2] );
+      $mysqldate = date( 'F j, Y g:i a', $phpdate );
+      echo("<div class='panel panel-default'>
+              <div class='panel-heading'>
+                <strong>{$row[0]} Commented</strong> <span class='text-muted pull-right'>{$mysqldate}</span>
+                </div>
+                <div class='panel-body'>
+                  {$row[1]}
+                </div>
+            </div>");
+
+      $row = mysql_fetch_row($comments);
     }
    }
    else
    {
-       print "There are no rows in the table <br />";
+       print "No Comments <br />";
    }
 
 
 
 
 ?>
-<?php include 'footer.php';?>
-=======
-<?php include 'header.php';?>
-
-<?php
-
-  echo("<h1>Wow, restaurant {$_GET['id']}</h1>");
-?>
-
 <?php include 'footer.php';?>
