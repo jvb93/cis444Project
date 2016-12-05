@@ -1,4 +1,5 @@
 <?php session_start() ?>
+<?php include 'phpFunctions/sanitize.inc.php';?>
 <!DOCTYPE html>
 
 <html lang="en">
