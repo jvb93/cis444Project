@@ -4,19 +4,16 @@
 <form id = "myForm" action="signUpVerify.php" method="post" >
   <div class="form-group">
     <label for="exampleInputEmail1">Username</label>
-    <input type="field" class="form-control" placeholder="Username" size ="20" name="username">
+    <input type="field" class="form-control" pattern="[a-zA-Z0-9_-]{4,20}" placeholder="Username" size ="20" name="username">
+	(Pease only enter letters and numbers)
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" placeholder="Password" size ="20" name="password">
+    <input type="password" class="form-control" pattern="[a-zA-Z0-9_-]{4,20}" placeholder="Password" size ="20" name="password">
+	(Pease only enter letters and numbers)
   </div>
   <div class="form-group ">
   <button type="submit" class="btn btn-primary">Submit</button>
-
-
-
-</div>
-
 
 </form>
 </div>

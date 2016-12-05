@@ -19,7 +19,18 @@ $(document).ready(function(){
         thisUpVoteButton.removeClass('text-success');
         thisDownVoteButton.removeClass('text-danger');
         thisUpVoteButton.addClass('text-success');
-        voteAreaScore.text(parseFloat(voteAreaScore.text())+1);
+
+        var score = parseFloat(voteAreaScore.text());
+        if (score < 0 )
+        {
+          score +=2;
+        }
+        else
+        {
+          score ++;
+        }
+
+        voteAreaScore.text(score);
 
         var ajaxURL = 'upVote.php?id='+id;
 
@@ -50,7 +61,20 @@ $(document).ready(function(){
         thisUpVoteButton.removeClass('text-success');
         thisDownVoteButton.removeClass('text-danger');
         thisDownVoteButton.addClass('text-danger');
-        voteAreaScore.text(parseFloat(voteAreaScore.text())-1);
+
+        var score = parseFloat(voteAreaScore.text());
+        if (score == 1 )
+        {
+          score -= 2;
+        }
+        else
+        {
+          score --;
+        }
+
+        voteAreaScore.text(score);
+
+
 
         var ajaxURL = 'downVote.php?id='+id;
         console.log(ajaxURL);
