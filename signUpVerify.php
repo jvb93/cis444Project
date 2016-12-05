@@ -7,10 +7,10 @@
 			$password=$_POST["password"];
 
 
-			sanitize_paranoid_string($username);
-			sanitize_paranoid_string($password);
+			$cleanUserName = sanitize_sql_string($username);
+			$cleanPassword = sanitize_sql_string($password);
 			//Second let's check if that username and password are correct and found in our database
-			$sql1=mysql_query("insert into User(user_name, Pass, create_date, last_login, is_admin) values('{$username}', '{$password}', NOW(), NOW(), 0)")
+			$sql1=mysql_query("insert into User(user_name, Pass, create_date, last_login, is_admin) values('{$cleanUserName}', '{$cleanPassword}', NOW(), NOW(), 0)")
 							   or die("<p>Could not perform database query for user login.</p>"
 									. "<p>Error Code " . mysql_errno()
 									. ": " . mysql_error()) . "<p>";

@@ -7,7 +7,7 @@ $result = mysql_query("select Restaurant.submitter_id, name, submit_date, User.U
         . "<p>Error Code " . mysql_errno()
         . ": " . mysql_error()) . "<p>";
 $dataRow = mysql_fetch_row($result);
-echo("<div class='row'><div class='c ol-md-12'><h1>{$dataRow[1]}<small class='pull-right'>User score: {$dataRow[5]}</small></h1></div></div>");
+echo("<div class='row'><div class='c ol-md-12'><h1><a href='$dataRow[4]' target='_blank'>{$dataRow[1]}</a><small class='pull-right'>User score: {$dataRow[5]}</small></h1></div></div>");
 
 
   $phpdate = strtotime( $dataRow[2] );
@@ -18,6 +18,10 @@ echo("<div class='row'><div class='c ol-md-12'><h1>{$dataRow[1]}<small class='pu
             or die("<p>Could not perform database query by device type types.</p>"
             . "<p>Error Code " . mysql_errno()
             . ": " . mysql_error()) . "<p>";
+  echo("<div class='row'><p>Submitted: $mysqldate by $dataRow[3]</p>");
+
+  echo("</div>");
+
 $tagRow = mysql_fetch_row($tags);
         do{
 
@@ -26,11 +30,9 @@ $tagRow = mysql_fetch_row($tags);
 
             $tagRow = mysql_fetch_row ($tags);
         } while ($tagRow);
-  //
-  echo("<p><br/></p>");
 
-  echo("<p>Submitted: $mysqldate by $dataRow[3]</p><br/>");
-  echo("<a href='$dataRow[4]' target='_blank'>Visit Site</a><br/>");
+
+
   $tags =  mysql_query("SELECT tag_value from Tag join Tag_Restaurant_Mapping on Tag_Restaurant_Mapping.tag_id = Tag.id where Tag_Restaurant_Mapping.restaurant_id = '{$dataRow[0]}'")
             or die("<p>Could not perform database query by device type types.</p>"
             . "<p>Error Code " . mysql_errno()
@@ -38,18 +40,10 @@ $tagRow = mysql_fetch_row($tags);
 
 
 
+
 #Checks if you're signed in to allow submitting comments
 if(isset($_SESSION['userId']))
 {
-  #If user created this restaurant, or if user is an admin, he/she can delete it
-  if($_SESSION['userId'] == $dataRow[0] OR
-     $_SESSION['isAdmin'] == 1)
-  {
-    echo("<form action='deleteRestaurant.php' method='get'>");
-    echo("<p> <input class='btn btn-danger' type ='submit' value='delete' />");
-    echo("<input type='hidden' name='restaurantID' value={$id} />");
-    echo("</form>");
-  }
 
   #Add comment
   echo ("
@@ -93,18 +87,23 @@ $comments = mysql_query("SELECT User.User_Name, Comment.comment_text,
                 </div>
                 <div class='panel-body'>
                   {$row[1]}
-                </div>");
+                </div>
+                <div class='panel-footer'>");
 
-      if($_SESSION['userName'] == $row[0] OR
-         $_SESSION['isAdmin'] == 1)
-      {
-        echo("<form action='deleteComment.php' method='get'>");
-        echo("<p> <input class='btn btn-danger' type ='submit' value='delete' />");
-        echo("<input type='hidden' name='commentID' value={$row[3]} />");
-        echo("</form>");
-      }
+         if(isset($_SESSION['userName']))
+         {
+           if($_SESSION['userName'] == $row[0] OR
+              $_SESSION['isAdmin'] == 1)
+           {
+             echo("<form action='deleteComment.php' method='get'>");
+             echo("<input class='btn btn-xs btn-danger' style='right:0px;' type ='submit' value='delete' />");
+             echo("<input type='hidden' name='commentID' value={$row[3]} />");
+             echo("</form>");
+           }
+         }
 
-      echo("</div>");
+
+      echo("</div></div>");
 
       $row = mysql_fetch_row($comments);
     }
@@ -112,6 +111,20 @@ $comments = mysql_query("SELECT User.User_Name, Comment.comment_text,
    else
    {
        print "No Comments <br />";
+   }
+
+
+
+   if(isset($_SESSION['userName']))	//If the session is already started.
+   {
+     if($_SESSION['userId'] == $dataRow[0] OR
+        $_SESSION['isAdmin'] == 1)
+     {
+       echo("<form action='deleteRestaurant.php' class='' method='get'>");
+       echo("<p> <input class='btn btn-danger form-control' type ='submit' value='Delete Restaurant' />");
+       echo("<input type='hidden' name='restaurantID' value={$id} />");
+       echo("</form>");
+     }
    }
 
 

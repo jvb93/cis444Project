@@ -7,7 +7,7 @@
 			$user = $_SESSION['userId'];
 
 
-			$cleancomment = str_replace("'", "", $comment);
+			$cleancomment = sanitize_sql_string($comment);
 
 
 			$result = mysql_query("INSERT INTO Comment(submitter_id, restaurant_id, comment_text, submit_date) VALUES({$user}, {$restaurantID}, '{$cleancomment}', NOW())")
