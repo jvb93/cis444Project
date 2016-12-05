@@ -1,5 +1,12 @@
 $(document).ready(function(){
 
+  $('.panel-footer').each(function() {
+
+      var offset = getRandomArbitrary(0, 500) +"px " + getRandomArbitrary(0,500)+ "px;";
+      console.log(offset);
+      $(this).attr("style", "background-position: " + offset +";");
+  });
+
   if($('#php_sess').val() == 1)
   {
     $('.upVote').click(function(){
@@ -94,6 +101,8 @@ $(document).ready(function(){
     });
   }
 
-
-
 });
+
+function getRandomArbitrary(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
