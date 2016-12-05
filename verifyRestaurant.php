@@ -2,11 +2,12 @@
 <?php include"header.php"; ?>
 <?php
 
-$restaurantName = $_POST['restaurantName'];
-$url = $_POST['restaurantSite'];
-$userName = $_SESSION['userId'];
-$tag = $_POST['tag'];
+$restaurantName = sanitize_sql_string($_POST['restaurantName']);
+$url = sanitize_sql_string($_POST['restaurantSite']);
+$userName = sanitize_sql_string($_SESSION['userId']);
+$tag = sanitize_sql_string($_POST['tag']);
 $tagList = explode(",",$tag);
+
 $sql = mysql_query("insert into Restaurant(Name, URL,Submitter_Id,Submit_Date) values('{$restaurantName}','{$url}','{$userName}', NOW())")
 or die("<p>Could not perform database query for user login.</p>"
  . "<p>Error Code " . mysql_errno()
