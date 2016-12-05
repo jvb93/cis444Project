@@ -7,7 +7,7 @@ $result = mysql_query("select Restaurant.submitter_id, name, submit_date, User.U
         . "<p>Error Code " . mysql_errno()
         . ": " . mysql_error()) . "<p>";
 $dataRow = mysql_fetch_row($result);
-echo("<div class='row'><div class='col-md-12'><h1>{$dataRow[1]}<small class='pull-right'>User score: {$dataRow[5]}</small></h1></div></div>");
+echo("<div class='row'><div class='c ol-md-12'><h1>{$dataRow[1]}<small class='pull-right'>User score: {$dataRow[5]}</small></h1></div></div>");
 
 
   $phpdate = strtotime( $dataRow[2] );

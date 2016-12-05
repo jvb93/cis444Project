@@ -17,9 +17,9 @@
               <small id="urlHelp" class="form-text text-muted">Required.</small>
             </div>
             <div class="form-group">
-              <label for="restaurantName">Tag</label>
-              <input type="text" class="form-control" name="tag" id="tag" aria-describedby="tagHelp" >
-              <small id="tagHelp" class="form-text text-muted">Enter tags seperated by a space</small>
+              <label for="restaurantName">Tag</label></br>
+              <input type="text" class="form-control" name="tag" id="tag" aria-describedby="tagHelp"></br>
+              <small id="tagHelp" class="form-text text-muted">Enter up to 5 tags seperated by spaces</small>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
