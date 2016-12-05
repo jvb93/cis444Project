@@ -2,14 +2,14 @@
 
 <?php
 $id=$_GET['id'];
-
-$result = mysql_query("select submitter_id, name, submit_date, User.User_Name, URL from Restaurant join User on Restaurant.submitter_id = User.id where Restaurant.id=$id")
+$result = mysql_query("select Restaurant.submitter_id, name, submit_date, User.User_Name, URL, SUM(((is_positive * 2) - 1)) as 'score' from Restaurant	join Vote on Restaurant.id = Vote.restaurant_id join User on Restaurant.submitter_id = User.id where Restaurant.id=$id")
         or die("<p>Could not perform database query.</p>"
         . "<p>Error Code " . mysql_errno()
         . ": " . mysql_error()) . "<p>";
 $dataRow = mysql_fetch_row($result);
+echo("<div class='row'><div class='col-md-12'><h1>{$dataRow[1]}<small class='pull-right'>User score: {$dataRow[5]}</small></h1></div></div>");
 
-  echo("<h1>$dataRow[1]</h1>");
+
   $phpdate = strtotime( $dataRow[2] );
   $mysqldate = date( 'F j, Y g:i a', $phpdate );
 
