@@ -38,23 +38,21 @@ $tagRow = mysql_fetch_row($tags);
 
 
 
-
-  if(isset($_SESSION['userName']))	//If the session is already started.
-  {
-    if($_SESSION['userId'] == $dataRow[0] OR
-       $_SESSION['isAdmin'] == 1)
-    {
-      echo("<form action='deleteRestaurant.php' method='get'>");
-      echo("<p> <input class='btn btn-danger' type ='submit' value='delete' />");
-      echo("<input type='hidden' name='restaurantID' value={$id} />");
-      echo("</form>");
-    }
-  }
 #Checks if you're signed in to allow submitting comments
 if(isset($_SESSION['userId']))
 {
-  echo ("
+  #If user created this restaurant, or if user is an admin, he/she can delete it
+  if($_SESSION['userId'] == $dataRow[0] OR
+     $_SESSION['isAdmin'] == 1)
+  {
+    echo("<form action='deleteRestaurant.php' method='get'>");
+    echo("<p> <input class='btn btn-danger' type ='submit' value='delete' />");
+    echo("<input type='hidden' name='restaurantID' value={$id} />");
+    echo("</form>");
+  }
 
+  #Add comment
+  echo ("
   <div id= 'restaurantName'>
     <div class='col-md-12'>
 
@@ -77,14 +75,13 @@ if(isset($_SESSION['userId']))
 echo("<h3>Comments</h3>");
 #Showing comments for restuarant
 $comments = mysql_query("SELECT User.User_Name, Comment.comment_text,
-  Comment.submit_date FROM User JOIN Comment
+  Comment.submit_date, Comment.id FROM User JOIN Comment
   ON User.id=Comment.submitter_id WHERE Comment.restaurant_id={$id} order by Comment.Submit_Date desc");
 
   $num_rows = mysql_num_rows($comments);
   if ($num_rows > 0)
   {
     $row = mysql_fetch_row($comments);
-
 
     for ($row_num = 0; $row_num < $num_rows; $row_num++)
     {
@@ -96,8 +93,18 @@ $comments = mysql_query("SELECT User.User_Name, Comment.comment_text,
                 </div>
                 <div class='panel-body'>
                   {$row[1]}
-                </div>
-            </div>");
+                </div>");
+
+      if($_SESSION['userName'] == $row[0] OR
+         $_SESSION['isAdmin'] == 1)
+      {
+        echo("<form action='deleteComment.php' method='get'>");
+        echo("<p> <input class='btn btn-danger' type ='submit' value='delete' />");
+        echo("<input type='hidden' name='commentID' value={$row[3]} />");
+        echo("</form>");
+      }
+
+      echo("</div>");
 
       $row = mysql_fetch_row($comments);
     }
@@ -106,8 +113,6 @@ $comments = mysql_query("SELECT User.User_Name, Comment.comment_text,
    {
        print "No Comments <br />";
    }
-
-
 
 
 ?>
