@@ -1,10 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
 html, body { min-height: 100%; }
 
 body{
   margin-top:50px;
-  background-image: url('../img/cheap_diagonal_fabric.png');
-  background-repeat: repeat;
 
+
+}
+
+h1, h2, h3, h4, h5, h6
+{
+
+  font-family: 'Roboto';
+  font-weight: 300;
 }
 
 .voteArea
@@ -12,19 +19,15 @@ body{
   text-align: center;
 }
 
-.panel
-{
-  border: 1px solid rgba(0,0,0,.05)
-}
 
 #login-header{
   text-align: center;
 
 }
 .login-form{
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+
+
+
 }
 .Personal-info-header{
   text-align: center;
@@ -36,4 +39,50 @@ body{
   width: 100%;
   margin-top:20px;
   margin-bottom:10px;
+}
+
+
+.panel-heading
+{
+    padding: 0px 15px;
+}
+.panel
+{
+  /*background-color: #555555;*/
+  border-bottom: 1px solid #19B5FE;
+
+
+}
+.panel-body.row{
+  margin-top:-42px;
+}
+.score{
+  font-size: 20px;
+}
+.panel-footer
+{
+  /*background-color: #444444;*/
+  border-top: 0;
+  background-image: url('../img/footer_lodyas.png');
+  background-repeat: repeat;
+
+}
+
+.panel-body
+{
+
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.navbar{
+  border-bottom: 1px solid #19B5FE;
+  background-image: url('../img/footer_lodyas.png');
+  background-repeat: repeat;
+}
+
+.restaurantLink
+{
+  margin-top: 15px;
+  margin-bottom: 0;
 }

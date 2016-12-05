@@ -6,6 +6,8 @@
 			$username=$_POST["username"];
 			$password=$_POST["password"];
 
+			sanitize_paranoid_string($username);
+			sanitize_paranoid_string($password);
 			//Second let's check if that username and password are correct and found in our database
 			$sql1=mysql_query("SELECT user_name, is_admin, id FROM User WHERE user_name='$username' AND Pass='$password'")
 							   or die("<p>Could not perform database query for user login.</p>"
@@ -14,7 +16,7 @@
 
 			if (mysql_num_rows($sql1) != 1)
 			{
-				echo("<script type='text/javascript'>location.replace('authentication_Failure_Page.php');</script>");
+				echo("<script type='text/javascript'>location.replace('login_Failure.php');</script>");
 			}
 			//if they are found in our database, and there is only one occurence of that username and password
 			//thus making them valid.

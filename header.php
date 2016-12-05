@@ -1,4 +1,5 @@
 <?php session_start() ?>
+<?php include 'phpFunctions/sanitize.inc.php';?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -12,6 +13,7 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/site.css" rel="stylesheet">
+    <link href="css/bootstrap-tagsinput.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -35,7 +37,7 @@
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
           <li><a href="index.php">Home</a></li>
-          <li><a href="faqContact.php">About</a></li>
+          <li><a href="about.php">About</a></li>
           <?php
 
 
@@ -57,9 +59,9 @@
           <li><a href="references.php">References</a></li>
         </ul>
         <div class="col-sm-3 col-md-3 navbar-right">
-        <form class="navbar-form" role="search">
+        <form class="navbar-form" role="search" method="post">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search" name="q">
+            <input type="text" class="form-control" placeholder="Search for a tag..." name="searchQuery">
             <div class="input-group-btn">
                 <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
             </div>
@@ -67,9 +69,8 @@
         </form>
     </div>
       </div><!--/.nav-collapse -->
-
       </div>
 
     </nav>
     <?php include('phpFunctions/db_connect.php'); ?>
-    <div class="container-fluid">
+    <div class="container">
