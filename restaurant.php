@@ -58,7 +58,7 @@ if(isset($_SESSION['userId']))
   <div id= 'restaurantName'>
     <div class='col-md-12'>
 
-      <div class= 'row'><div class='col-md-12'><div class='well'><h1>Add Comment</h1>
+      <div class= 'row'><div class='col-md-12'><div class='well'><h3>Add Comment</h3>
         <form action = 'addComment.php' method = 'post'>
           <p>
             <input type='hidden' value='$id' name='restaurantID'></input>
@@ -66,7 +66,7 @@ if(isset($_SESSION['userId']))
 
             </textarea>
           </p>
-          <input type = 'submit' value = 'Submit' />
+          <input type = 'submit' value = 'Submit' class='btn btn-primary' />
           </form>
       </div></div>
       </div>
