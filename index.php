@@ -9,35 +9,40 @@
     </div>
     </div>
     <div class="row">
-	
-      <?php
-                  if(isset($_POST['searchQuery']))
-                  {
-					  $searchQuery=$_POST["searchQuery"];
-					  echo("<h3>Results for \"{$searchQuery}\":</h3>");
-		/*
-		NOTES: select * from Restaurant, Tag_Restaurant_Mapping where Tag_Restaurant_Mapping.tag_id = (select id from Tag where tag_value='$searchQuery');
 
-		
-select *, SUM(((is_positive * 2) - 1)) as 'score'
-from 
-(select * from Restaurant, Tag, Tag_Restaurant_Mapping where Tag_Restaurant_Mapping.tag_id = (select Tag.id from Tag where tag_value='Beer')) as filtered
-join Vote on Restaurant.id = Vote.restaurant_id group by Restaurant.id, name, url, Restaurant.submitter_id, submit_date
-order by score desc;
-		*/
-		
-      $result = mysql_query("select *, SUM(((is_positive * 2) - 1)) as 'score'
-								from Restaurant
-								join Vote on Restaurant.id = Vote.restaurant_id
-								group by Restaurant.id, name, url, Restaurant.submitter_id, submit_date
-								order by score desc")
-              or die("<p>Could not perform database query by device type types.</p>"
-              . "<p>Error Code " . mysql_errno()
-              . ": " . mysql_error()) . "<p>";
-			  
-				 }
+      <?php
+        if(isset($_POST['searchQuery']))
+        {
+          $searchQuery=$_POST["searchQuery"];
+
+          $tags = explode(" ",$searchQuery);
+          $tag = $tags[0];
+
+          sanitize_paranoid_string($tag);
+          echo("<h3>Results for \"{$tag}\":</h3>");
+          $tagQuery =   "select * from (select Restaurant.id, Restaurant.Name, Restaurant.submit_date, Restaurant.URL, SUM(((is_positive * 2) - 1)) as 'score' from Tag join Tag_Restaurant_Mapping on Tag.id = Tag_Restaurant_Mapping.tag_id join Restaurant on Restaurant.id = Tag_Restaurant_Mapping.restaurant_id join Vote on Restaurant.id = Vote.restaurant_id where tag_value like '%{$tag}%'  group by Restaurant.id, Restaurant.Name, Restaurant.submit_date, Restaurant.URL order by score desc) t where score is not null";
+
+
+
+          /*
+          NOTES: select * from Restaurant, Tag_Restaurant_Mapping where Tag_Restaurant_Mapping.tag_id = (select id from Tag where tag_value='$searchQuery');
+
+
+          select *, SUM(((is_positive * 2) - 1)) as 'score'
+          from
+          (select * from Restaurant, Tag, Tag_Restaurant_Mapping where Tag_Restaurant_Mapping.tag_id = (select Tag.id from Tag where tag_value='Beer')) as filtered
+          join Vote on Restaurant.id = Vote.restaurant_id group by Restaurant.id, name, url, Restaurant.submitter_id, submit_date
+          order by score desc;
+          */
+
+          $result = mysql_query($tagQuery)
+          or die("<p>Could not perform database query by device type types.</p>"
+          . "<p>Error Code " . mysql_errno()
+          . ": " . mysql_error()) . "<p>";
+
+          }
 				  else {
-      $result = mysql_query("select *, SUM(((is_positive * 2) - 1)) as 'score'
+      $result = mysql_query("select Restaurant.id, Restaurant.Name, Restaurant.submit_date, Restaurant.URL, SUM(((is_positive * 2) - 1)) as 'score'
 								from Restaurant
 								join Vote on Restaurant.id = Vote.restaurant_id
 								group by Restaurant.id, name, url, Restaurant.submitter_id, submit_date
@@ -46,9 +51,9 @@ order by score desc;
               . "<p>Error Code " . mysql_errno()
               . ": " . mysql_error()) . "<p>";
 				  }
-				  
-				  
-				  
+
+
+
               if(mysql_num_rows($result) > 0)
               {
                 $dataRow = mysql_fetch_row($result);
@@ -77,7 +82,7 @@ order by score desc;
                   }
 
 
-                  $phpdate = strtotime( $dataRow[4] );
+                  $phpdate = strtotime( $dataRow[2] );
                   $mysqldate = date( 'F j, Y g:i a', $phpdate );
                   # start restaurant panel
                   echo("<div class='panel'>
@@ -107,7 +112,7 @@ order by score desc;
                               echo("<a href='#' class='voteLink'><span class='glyphicon glyphicon-chevron-up vote upVote text-success' aria-hidden='true' data-id='{$dataRow[0]}'></span></a>
                               </div>
                               <div class='row text-success score'>
-                              {$dataRow[9]}
+                              {$dataRow[4]}
                               </div>
                               <div class='row'>
                               <a href='#' class='voteLink'><span class='glyphicon glyphicon-chevron-down downVote vote' aria-hidden='true' data-id='{$dataRow[0]}'></span></a>
@@ -119,7 +124,7 @@ order by score desc;
                               echo("<a href='#' class='voteLink'><span class='glyphicon glyphicon-chevron-up vote upVote' aria-hidden='true' data-id='{$dataRow[0]}'></span></a>
                               </div>
                               <div class='row text-danger score'>
-                              {$dataRow[9]}
+                              {$dataRow[4]}
                               </div>
                               <div class='row'>
                               <a href='#' class='voteLink'><span class='glyphicon glyphicon-chevron-down downVote vote text-danger data-id='{$dataRow[0]}' aria-hidden='true'></span></a>
@@ -133,7 +138,7 @@ order by score desc;
                             echo("<a href='#' class='voteLink'><span class='glyphicon glyphicon-chevron-up vote upVote' aria-hidden='true' data-id='{$dataRow[0]}'></span></a>
                             </div>
                             <div class='row text-muted score'>
-                            {$dataRow[9]}
+                            {$dataRow[4]}
                             </div>
                             <div class='row'>
                             <a href='#' class='voteLink'><span class='glyphicon glyphicon-chevron-down downVote vote' aria-hidden='true' data-id='{$dataRow[0]}'></span></a>
@@ -143,7 +148,7 @@ order by score desc;
                           # make the panel footer
                           echo("</div>
                           <div class='col-md-11'>
-                            <h2 class='pull-left restaurantLink'><a href='{$dataRow[2]}' target='_blank'> {$dataRow[1]}</a></h2>
+                            <h2 class='pull-left restaurantLink'><a href='{$dataRow[3]}' target='_blank'> {$dataRow[1]}</a></h2>
                           </div>
                           </div>
                           <div class='panel-footer'>");
