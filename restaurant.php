@@ -18,9 +18,10 @@ echo("<div class='row'><div class='c ol-md-12'><h1><a href='$dataRow[4]' target=
             or die("<p>Could not perform database query by device type types.</p>"
             . "<p>Error Code " . mysql_errno()
             . ": " . mysql_error()) . "<p>";
-  echo("<div class='row'><p>Submitted: $mysqldate by $dataRow[3]</p>");
+  echo("<div class='row'><div class='col-md-12'><p>Submitted: $mysqldate by $dataRow[3]</p></div></div>");
 
-  echo("</div>");
+
+echo("<div class='row'><div class='col-md-12'>Tags: ");
 
 $tagRow = mysql_fetch_row($tags);
         do{
@@ -31,7 +32,7 @@ $tagRow = mysql_fetch_row($tags);
             $tagRow = mysql_fetch_row ($tags);
         } while ($tagRow);
 
-
+echo ("</div></div>");
 
   $tags =  mysql_query("SELECT tag_value from Tag join Tag_Restaurant_Mapping on Tag_Restaurant_Mapping.tag_id = Tag.id where Tag_Restaurant_Mapping.restaurant_id = '{$dataRow[0]}'")
             or die("<p>Could not perform database query by device type types.</p>"
