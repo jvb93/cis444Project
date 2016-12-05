@@ -14,7 +14,10 @@ $dataRow = mysql_fetch_row($result);
   $mysqldate = date( 'F j, Y g:i a', $phpdate );
   echo("<p>Submitted: $mysqldate by $dataRow[3]</p><br/>");
   echo("<a href='$dataRow[4]' target='_blank'>Visit Site</a><br/>");
-
+  $tags =  mysql_query("SELECT tag_value from Tag join Tag_Restaurant_Mapping on Tag_Restaurant_Mapping.tag_id = Tag.id where Tag_Restaurant_Mapping.restaurant_id = '{$dataRow[0]}'")
+            or die("<p>Could not perform database query by device type types.</p>"
+            . "<p>Error Code " . mysql_errno()
+            . ": " . mysql_error()) . "<p>";
 
 
 
