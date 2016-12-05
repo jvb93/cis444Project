@@ -18,9 +18,9 @@
           $tags = explode(" ",$searchQuery);
           $tag = $tags[0];
 
-          sanitize_paranoid_string($tag);
-          echo("<h3>Results for \"{$tag}\":</h3>");
-          $tagQuery =   "select * from (select Restaurant.id, Restaurant.Name, Restaurant.submit_date, Restaurant.URL, SUM(((is_positive * 2) - 1)) as 'score' from Tag join Tag_Restaurant_Mapping on Tag.id = Tag_Restaurant_Mapping.tag_id join Restaurant on Restaurant.id = Tag_Restaurant_Mapping.restaurant_id join Vote on Restaurant.id = Vote.restaurant_id where tag_value like '%{$tag}%'  group by Restaurant.id, Restaurant.Name, Restaurant.submit_date, Restaurant.URL order by score desc) t where score is not null";
+          $cleanTag = sanitize_paranoid_string($tag);
+          echo("<h3>Results for \"{$cleanTag}\":</h3>");
+          $tagQuery =   "select * from (select Restaurant.id, Restaurant.Name, Restaurant.submit_date, Restaurant.URL, SUM(((is_positive * 2) - 1)) as 'score' from Tag join Tag_Restaurant_Mapping on Tag.id = Tag_Restaurant_Mapping.tag_id join Restaurant on Restaurant.id = Tag_Restaurant_Mapping.restaurant_id join Vote on Restaurant.id = Vote.restaurant_id where tag_value like '%{$cleanTag}%'  group by Restaurant.id, Restaurant.Name, Restaurant.submit_date, Restaurant.URL order by score desc) t where score is not null";
 
 
 
@@ -88,20 +88,18 @@
                   # start restaurant panel
                   echo("<div class='panel'>
                         <div class='panel-heading'>
-                            <div class='text-center'>
-                                <div class='row'>
 
+                                <div class='row'>
                                     <div class='col-sm-12'>
                                         <h4 class='pull-right'>
                                             <small><em>Submitted: {$mysqldate}</em></small>
                                         </h4>
                                     </div>
-                                </div>
                             </div>
                         </div>
 
                         <div class='panel-body row'>
-                            <div class='col-md-1 voteArea'>
+                            <div class='col-md-1 col-sm-1 col-xs-1 voteArea'>
                                 <div class='row'>");
                           # check to see if the user has voted for this restaurant, highlight their vote if they have
                           if( isset($votes) && mysql_num_rows($votes) > 0)
@@ -148,7 +146,7 @@
 
                           # make the panel footer
                           echo("</div>
-                          <div class='col-md-11'>
+                          <div class='col-md-11 col-sm-11 col-xs-11'>
                             <h2 class='pull-left restaurantLink'><a href='{$dataRow[3]}' target='_blank'> {$dataRow[1]}</a></h2>
                           </div>
                           </div>
