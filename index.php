@@ -103,7 +103,7 @@
                             <div class='col-md-1 voteArea'>
                                 <div class='row'>");
                           # check to see if the user has voted for this restaurant, highlight their vote if they have
-                          if(mysql_num_rows($votes) > 0))
+                          if(mysql_num_rows($votes) > 0)
                           {
 
                             # if they voted and it was an upvote, make the up arrow red
