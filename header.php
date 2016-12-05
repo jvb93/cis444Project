@@ -61,7 +61,7 @@
         <div class="col-sm-3 col-md-3 navbar-right">
         <form class="navbar-form" role="search" method="post">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search Tags..." name="searchQuery">
+            <input type="text" class="form-control" placeholder="Search for a tag..." name="searchQuery">
             <div class="input-group-btn">
                 <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
             </div>
