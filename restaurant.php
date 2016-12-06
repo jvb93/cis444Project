@@ -51,11 +51,11 @@ if(isset($_SESSION['userId']))
   <div id= 'restaurantName'>
     <div class='col-md-12'>
 
-      <div class= 'row'><div class='col-md-12'><div class='well'><h3>Add Comment</h3>
+      <div class= 'row'><div class='col-md-12'><div class='well commentBox'><h3>Add Comment</h3>
         <form action = 'addComment.php' method = 'post'>
           <p>
             <input type='hidden' value='$id' name='restaurantID'></input>
-            <textarea name='comment' rows='4' cols='110'>
+            <textarea name='comment' style='width:100%;'>
 
             </textarea>
           </p>

@@ -32,7 +32,7 @@ for($i = 0; $i < count($tagList); ++$i) {
 
  //map the tag with the restaurant in the Tag_Restaurant_Mapping
 
-
+ 
 
 $sql4 = mysql_query("insert into Vote(is_positive, submitter_id, restaurant_id) values(1,{$userName},{$restaurant[0]})");
 

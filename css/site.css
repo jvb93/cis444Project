@@ -6,6 +6,17 @@ body{
 
 
 }
+.well
+{
+  background-image: url('../img/footer_lodyas.png');
+  background-repeat: repeat;
+
+}
+
+.commentBox
+{
+  padding-top: 0;
+}
 
 h1, h2, h3, h4, h5, h6
 {
@@ -14,12 +25,17 @@ h1, h2, h3, h4, h5, h6
   font-weight: 300;
 }
 
+
 .voteArea
 {
   text-align: center;
 
 }
 
+.bootstrap-tagsinput
+{
+  min-width: 100%;
+}
 
 #login-header{
   text-align: center;
